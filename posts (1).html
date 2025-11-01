@@ -31,6 +31,7 @@
   --light-gray:#f4f4f4;
   --text:#111;
   --white:#fff;
+  --opacity: 0.5;
   --overlay: rgba(0,0,0,0.3);
 }
 *{box-sizing:border-box;margin:0;padding:0;font-family:"Google Sans",sans-serif}
@@ -43,7 +44,7 @@ body{
   overflow:hidden;
 }
 .top-bar{
-  background:var(--red);
+  background-image: url('https://i.ibb.co/GfwMFpYT/2270-20251101232738.png');
   color:var(--white);
   height:56px;
   display:flex;
@@ -142,11 +143,19 @@ main{
 .comment-form input{ flex:1; padding:8px 10px; border-radius:8px; border:1px solid #ddd; }
 .comment-form button{ padding:8px 12px; background:var(--red); color:white; border:none; border-radius:8px; cursor:pointer; }
 
+body {
+  background-image: url('https://i.ibb.co/nFqpdcw/IMG-20251101-165142-063.jpg');
+  background-repeat: no-repeat; /* Запрещает повтор изображения */
+  background-position: center center; /* Центрирует изображение */
+  background-size: cover; /* Масштабирует изображение так, чтобы оно покрывало всю область */
+  background-attachment: fixed; /* Фиксирует фон при прокрутке */
+  }
+  
 .bottom-bar{
-  position:fixed; left:0; right:0; bottom:0; height:60px; background:var(--white);
+  position:fixed; left:0; right:0; bottom:0; height:60px; background:var(--opacity);
   display:flex; align-items:center; justify-content:space-around; border-top:1px solid #eee; z-index:50;
 }
-.bottom-bar button{ background:none; border:none; font-size:22px; color:#666; cursor:pointer; }
+.bottom-bar button{ background:none; border:none; font-size:22px; color:var(--red); cursor:pointer; }
 .bottom-bar button.active{ color:var(--red); }
 
 .grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
@@ -155,9 +164,7 @@ main{
 </head>
 <body>
 <header class="top-bar">
-  <span style="color:var(--yellow); font-weight:700; font-size:24px;">1131</span>
-  <span>Проспект</span>
-  <img src="https://i.ibb.co/tpcPrDZM" alt="">
+  <span style="color:var(--yellow); font-weight:700; font-size:24px;">ССБА</span>
 </header>
 
 <main>
@@ -248,7 +255,7 @@ const db = getDatabase(app);
 
 const allowedIPs = [
   "185.146.112.225",
-  "37.214.67.172"
+  "46.172.79.130"
 ];
 
 const navBtns=document.querySelectorAll('.nav-btn');
@@ -502,7 +509,7 @@ async function populateSearch(){
   const snap=await get(ref(db,'Posting'));
   const data=snap.val()||{};
   results.innerHTML='';
-  Object.keys(data).forEach(id=>{
+  Objject.keys(data).forEach(id=>{
     const post=data[id];
     const card=document.createElement('div');
     card.className='post-card';
@@ -586,6 +593,7 @@ window.addEventListener('load', replaceHetmanWithImage);
 </body>
 
 </html>
+
 
 
 
