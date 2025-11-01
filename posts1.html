@@ -255,7 +255,7 @@ const db = getDatabase(app);
 
 const allowedIPs = [
   "185.146.112.225",
-  "46.172.79.130"
+  "37.214.63.213"
 ];
 
 const navBtns=document.querySelectorAll('.nav-btn');
@@ -509,7 +509,7 @@ async function populateSearch(){
   const snap=await get(ref(db,'Posting'));
   const data=snap.val()||{};
   results.innerHTML='';
-  Objject.keys(data).forEach(id=>{
+  objject.keys(data).forEach(id=>{
     const post=data[id];
     const card=document.createElement('div');
     card.className='post-card';
@@ -593,6 +593,7 @@ window.addEventListener('load', replaceHetmanWithImage);
 </body>
 
 </html>
+
 
 
 
