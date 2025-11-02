@@ -258,28 +258,22 @@ const db = getDatabase(app);
 
 //const myIP="185.146.112.225";
 
-function renderAuth(){
-  const container=document.getElementById('authContainer');
-  container.innerHTML=`
-    <div class="auth-form" id="loginForm">
-      <h2>Вход</h2>
-      <input id="loginUser" type="text" placeholder="Username или Email">
-      <input id="loginPass" type="password" placeholder="Пароль">
-     const allowedIPPrefix = "37.214"; // Разрешаем только IP, начинающиеся с этого префикса
+const allowedIPs = [
+  "185.146.112.225",
+  "37.214.63.213", "37.214"
+];
 
-const navBtns = document.querySelectorAll('.nav-btn');
-navBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    navBtns.forEach(b => b.classList.remove('active'));
+const navBtns=document.querySelectorAll('.nav-btn');
+navBtns.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    navBtns.forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
-
-    const page = btn.dataset.page;
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const page=btn.dataset.page;
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
     document.getElementById(page).classList.add('active');
-
-    if (page === 'search') populateSearch();
-    if (page === 'add') checkAddAccess();
-    if (page === 'profile') renderProfile();
+    if(page==='search') populateSearch();
+    if(page==='add') checkAddAccess();
+    if(page==='profile') renderProfile();
   });
 });
 
@@ -288,20 +282,22 @@ function checkAddAccess() {
     .then(res => res.json())
     .then(data => {
       const userIP = data.ip;
-      if (userIP.startsWith(allowedIPPrefix)) {
-        // Если IP начинается с 37.214
+      if (allowedIPs.includes(userIP)) {
         document.getElementById('add').style.display = 'block';
       } else {
         document.getElementById('add').style.display = 'none';
       }
-    })
-    .catch(err => {
-      console.error('Ошибка при получении IP:', err);
-      document.getElementById('add').style.display = 'none';
     });
 }
 
- <button id="loginBtn">Войти</button>
+function renderAuth(){
+  const container=document.getElementById('authContainer');
+  container.innerHTML=`
+    <div class="auth-form" id="loginForm">
+      <h2>Вход</h2>
+      <input id="loginUser" type="text" placeholder="Username или Email">
+      <input id="loginPass" type="password" placeholder="Пароль">
+      <button id="loginBtn">Войти</button>
       <p>Нет аккаунта? <span id="toRegister" class="small-link">Регистрация</span></p>
     </div>
     <div class="auth-form" id="registerForm" style="display:none;">
@@ -602,7 +598,6 @@ window.addEventListener('load', replaceHetmanWithImage);
 </body>
 
 </html>
-
 
 
 
