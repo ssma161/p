@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1131 Проспект — Сайт</title>
+    <title>Скинхеды Сталинисты Боевые Антифашисты — ССБА</title>
     <link rel="icon" href="favicon.png" type="image/png">
 <link rel="stylesheet" href="project_styles.css">
 <!customcode>
@@ -194,10 +194,15 @@ body {
   <div class="telegram-info">
     <h2>Наши Telegram-каналы</h2>
     <p>Подписывайся, чтобы не пропустить новости!</p>
-    <a href="https://t.me/fck_131" class="tg-button" target="_blank"><i class="ri-telegram-fill"></i> Перейти в Telegram</a>
 	  <br>
 	  <br>
-	<a href="https://t.me/fck_131" class="tg-button" target="_blank"><i class="ri-telegram-fill"></i> Перейти в Telegram</a>
+    <a href="https://t.me/Stalinhead" class="tg-button" target="_blank"><i class="ri-telegram-fill"></i> Перейти в ССБА</a>
+	  <br>
+	  <br>
+	<a href="https://t.me/fck_131" class="tg-button" target="_blank"><i class="ri-telegram-fill"></i> Перейти в 1131 Проспект</a>
+	  <br>
+	  <br>
+	  <a href="https://t.me/RedStarSSBA" class="tg-button" target="_blank"><i class="ri-telegram-fill"></i> Перейти в Красную Звезду</a>
   </div>
 </section>
 
@@ -509,7 +514,7 @@ async function populateSearch(){
   const snap=await get(ref(db,'Posting'));
   const data=snap.val()||{};
   results.innerHTML='';
-  objject.keys(data).forEach(id=>{
+  Object.keys(data).forEach(id=>{
     const post=data[id];
     const card=document.createElement('div');
     card.className='post-card';
@@ -545,7 +550,7 @@ function escapeHTML(str) {
     '"': '&quot;',
     "'": '&#39;'
   }[tag] || tag));
-}
+	}
 
 //Статус типа дохуя важный да да
 function replaceHetmanWithImage() {
@@ -593,6 +598,7 @@ window.addEventListener('load', replaceHetmanWithImage);
 </body>
 
 </html>
+
 
 
 
